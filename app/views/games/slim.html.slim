@@ -1,0 +1,46 @@
+doctype 5
+html
+  head
+    title Wireframes
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    javascript:
+      function increase(id) { 
+        var value = +1;
+        write_to_total(id ,value);
+        ajax(id ,"increase");
+      }
+      function decrease(id) { 
+        var value = -1;
+        write_to_total(id ,value);
+        ajax(id ,"decrease");
+      }
+      function write_to_total(id ,value){
+        var already = document.getElementById("total-"+id+"");
+        var currentvalue = parseFloat(already.innerHTML);
+        already.innerHTML = (!isNaN(currentvalue) == true ? currentvalue + value : 1)
+      }
+      function ajax(id , metod){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("demo").innerHTML =
+            this.responseText;
+          }
+        };
+        xhttp.open("PATCH", "/games/"+id+"?metod="+metod+"", true);
+        xhttp.send(metod);
+      }
+
+      
+  body
+  div class=("container") 
+    div class=("row text-center") style=("margin-top: 30px; margin-bottom: 20px;")
+      div style=("padding: 16px")
+      h2 Games 
+      - if @soccers.blank?
+
+      - else
+        - @soccers.each do |soccer|
+          = render "slim_process", soccer: soccer

@@ -1,0 +1,51 @@
+div class=("col-md-12 col-sm-12 col-12")
+
+	div class=("row")
+		div class=("col-ms-2 col-2 col-md-2") style=("margin: 0px; padding: 0px")
+			div class=("title") 10%
+			div style=("height: 180px;  background: #58D484; border-right: 10px solid red")
+		div class=("col-ms-2 col-2 col-md-2") style=("margin: 0px; padding: 0px")
+			div class=("title") 10%
+			div style=("height: 180px;  background: #58D484; border-right: 10px solid red")
+		div class=("col-ms-2 col-2 col-md-2") style=("margin: 0px; padding: 0px")
+			div class=("title") 10%
+			div style=("height: 180px;  background: #58D484; border-right: 10px solid red")
+		div class=("col-ms-2 col-2 col-md-2") style=("margin: 0px; padding: 0px")
+			div class=("title") 10%
+			div style=("height: 180px;  background: #58D484; border-right: 10px solid red")
+		div class=("col-ms-2 col-2 col-md-2") style=("margin: 0px; padding: 0px")
+			div class=("title") 10%
+			div style=("height: 180px;  background: #58D484; border-right: 10px solid red")
+		div class=("col-ms-2 col-2 col-md-2") style=("margin: 0px; padding: 0px")
+			div class=("title") 10%
+			div style=("height: 180px;  background: #58D484; border-right: 10px solid red")
+div class=("col-md-12 col-sm-12 col-12")
+	div class=("row")  style=("margin-top: 30px; margin-bottom: 20px;")
+		div class=("col-ms-1 col-1 col-md-1") style=("margin: 0px; padding: 0px")
+		    = image_tag soccer.home_team_logo.url , style:" height: 50px; width: 50px"
+		div class=("col-ms-1 col-1 col-md-1") style=("margin: 0px; padding: 0px")
+		    = image_tag soccer.away_team_logo.url ,style:" height: 50px; width: 50px"
+		div class=("col-ms-3 col-3 col-md-3 text-left") style=("margin: 0px; padding: 0px; margin-left: 10px ;   margin-right: 15px;")
+			div style=("color: #58D484; font-size: 18px;     font-weight: 800;")
+				= soccer.title 
+			div style=("color: #000")
+				= soccer.game_time 
+		div class=("col-ms-1 col-1 col-md-1 text-left") style=("margin: 0px; padding: 0px; margin-left: 10px")
+			div style=("color: #ddd; font-size: 18px;     font-weight: 800;")
+				= soccer.reach
+			div style=("color: #000") Reach
+		div class=("col-ms-1 col-1 col-md-1 text-left") style=("margin: 0px; padding: 0px; margin-left: 10px")
+			div style=("color: #ddd; font-size: 18px;     font-weight: 800;")
+				= soccer.league 
+			div style=("color: #000") League
+		div class=("col-ms-1 col-1 col-md-1 text-left") style=("margin: 0px; padding: 0px; margin-left: 10px")
+			div style=("color: #ddd; font-size: 18px;     font-weight: 800;")
+				= soccer.channel
+			div style=("color: #000") Channel
+		div class=("col-ms-1 col-1 col-md-1 text-center") style=("margin: 0px; padding: 0px; margin-left: 10px") 
+				= "#{soccer.price_per_minute}/min"
+		div class=("col-ms-2 col-2 col-md-2 text-center") style=("margin: 0px; padding: 0px; margin-left: 0px")
+				button type=("button") class=("btn btn-secondary btn-sm") onclick='increase("#{soccer.id}")' +
+				span style=("background: #fff;") id="total-#{soccer.id}" 
+				  = soccer.minutes_booked.blank? ? 0 : soccer.minutes_booked 
+				button type=("button") onclick='decrease("#{soccer.id}")' class=("btn btn-secondary btn-sm") -

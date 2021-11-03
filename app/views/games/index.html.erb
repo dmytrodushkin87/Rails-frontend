@@ -1,0 +1,66 @@
+
+<div class="container"> 
+
+    <br /> <br/> 
+
+
+    <div class="row text-center" style="margin-top: 30px; margin-bottom: 20px;">
+        <div style="padding: 16px">
+            <h2> Games </h2>
+        </div>
+
+
+         <% @soccers.each do |soccer|%>
+         
+           <%= render 'game_process',soccer: soccer %>
+
+         <% end %>
+    </div>
+
+     
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<script >
+
+  function increase(id) { 
+    var value = +1;
+    write_to_total(id ,value);
+    ajax(id ,"increase");
+  }
+
+  function decrease(id) { 
+    var value = -1;
+    write_to_total(id ,value);
+    ajax(id ,"decrease");
+  }
+
+  function write_to_total(id ,value){
+    var already = document.getElementById("total-"+id+"");
+    var currentvalue = parseFloat(already.innerHTML);
+    already.innerHTML = (!isNaN(currentvalue) == true ? currentvalue + value : 1)
+  }
+  function ajax(id , metod){
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("demo").innerHTML =
+        this.responseText;
+      }
+    };
+    xhttp.open("PATCH", "/games/"+id+"?metod="+metod+"", true);
+    xhttp.send(metod);
+
+  }
+
+</script>
